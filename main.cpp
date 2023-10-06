@@ -51,7 +51,6 @@ namespace offsets
     ptrdiff_t p_entity_list = 0x178D8E8;
     ptrdiff_t m_h_player_pawn = 0x7FC;
     ptrdiff_t m_fl_detected_by_enemy_sensor_time = 0x13C8;
-    ptrdiff_t m_vOldOrigin = 0x1214;
 }
 
 int main() {
