@@ -153,26 +153,6 @@ int main() {
 }
 
 /*
-
-pub const dwEntityList: usize = 0x178D8E8;
-pub const dwGlobalVars: usize = 0x1690D18;
-pub const dwLocalPlayerController: usize = 0x17DC158;
-pub const dwLocalPlayerPawn: usize = 0x187AC48;
-pub const dwViewAngles: usize = 0x18DA700;
-pub const dwViewMatrix: usize = 0x187B730;
-pub const dwPlantedC4: usize = 0x1880DE0;
-
-pub const m_iPawnHealth: usize = 0x808;
-pub const m_hPlayerPawn: usize = 0x7FC;
-pub const m_sSanitizedPlayerName: usize = 0x720;
-pub const m_iTeamNum: usize = 0x3BF;
-pub const m_vOldOrigin: usize = 0x1214;
-
-public const nint dwForceJump = 0x1695130;
-
-*/
-
-/*
 bool DoesFileExist(const char* name) {
     if (FILE* file = fopen(name, "r")) {
         fclose(file);
