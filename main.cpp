@@ -53,24 +53,8 @@ namespace offsets
     ptrdiff_t m_fl_detected_by_enemy_sensor_time = 0x13C8;
 }
 
-int main() {
-    SetConsoleTitleA("dooogeware");
-
-    DWORD pid = Eris::GetPID("cs2.exe");
-
-    std::cout <<
-        (pid == 0 ? "Process not found" : "Process found") << std::endl;
-
-    HANDLE Handle = Eris::Hijack(pid);
-
-    if (Handle != nullptr) {
-        std::cout << "Successfully hijacked handle: " << Handle << std::endl;
-    }
-    else {
-        std::cerr << "Failed to hijack handle" << std::endl;
-    }
-
-    HANDLE cs2_process_handle = Handle;
+void hack(HANDLE handle) {
+    HANDLE cs2_process_handle = handle;
     printf("cs2.exe process handle: 0x%lx\n", cs2_process_handle);
 
     if (!cs2_process_handle)
@@ -91,14 +75,14 @@ int main() {
         {
             glow_enabled = !glow_enabled;
             std::this_thread::sleep_for(std::chrono::milliseconds(150));
-            printf("status enabled: %s\n", glow_enabled ? "true" : "false");
+            printf("status enabled [glow]: %s\n", glow_enabled ? "true" : "false");
         }
 
         if (GetAsyncKeyState(VK_F2))
         {
             noflash_enabled = !noflash_enabled;
             std::this_thread::sleep_for(std::chrono::milliseconds(150));
-            printf("status enabled: %s\n", noflash_enabled ? "true" : "false");
+            printf("status enabled [no flash]: %s\n", noflash_enabled ? "true" : "false");
         }
 
         for (int i = 1; i < 64; i++)
@@ -146,7 +130,26 @@ int main() {
 
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
+}
 
+int main() {
+    SetConsoleTitleA("dooogeware");
+
+    DWORD pid = Eris::GetPID("cs2.exe");
+
+    std::cout <<
+        (pid == 0 ? "Process not found" : "Process found") << std::endl;
+
+    HANDLE Handle = Eris::Hijack(pid);
+
+    if (Handle != nullptr) {
+        std::cout << "Successfully hijacked handle: " << Handle << std::endl;
+    }
+    else {
+        std::cerr << "Failed to hijack handle" << std::endl;
+    }
+
+    hack(Handle);
     getchar();
     return 0;
 }
